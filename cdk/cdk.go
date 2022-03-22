@@ -121,6 +121,7 @@ func NewCDKStack(scope constructs.Construct, id string, props *CDKStackProps) aw
 					Resources: jsii.Strings("*"),
 				}),
 			},
+			Architecture: awslambda.Architecture_X86_64(),
 		})
 		db.GrantReadWriteData(f)
 		fh.GrantPutRecords(f)
