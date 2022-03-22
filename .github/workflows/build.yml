@@ -39,19 +39,19 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build Linux x86
-      run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && go build -o output/cwexport-linux-x86
+      run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="linux" GOARCH="amd64" go build -o output/cwexport-linux-x86
 
     - name: Build Linux arm64
-      run: GOOS="linux" GOARCH="arm64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && go build -o output/cwexport-linux-arm64
+      run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="linux" GOARCH="arm64" go build -o output/cwexport-linux-arm64
 
     - name: Build MacOS x86
-      run: GOOS="darwin" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && go build -o output/cwexport-darwin-x86
+      run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="darwin" GOARCH="amd64" go build -o output/cwexport-darwin-x86
 
     - name: Build MacOS arm64
-      run: GOOS="darwin" GOARCH="arm64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && go build -o output/cwexport-darwin-arm64
+      run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="darwin" GOARCH="arm64" go build -o output/cwexport-darwin-arm64
 
     - name: Build Windows x86
-      run: GOOS="windows" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && go build -o output/cwexport-win-x86
+      run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="windows" GOARCH="amd64" go build -o output/cwexport-win-x86
 
     - name: Upload linux x86 artifact
       uses: actions/upload-release-asset@v1
