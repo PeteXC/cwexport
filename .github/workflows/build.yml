@@ -21,10 +21,9 @@ jobs:
     #   run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && go test -v -cover ./...
 
     - name: Build Changelog
-      id: github_release
-      uses: mikepenz/release-changelog-builder-action@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: heinrichreimer/github-changelog-generator-action@v2.3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Release
       uses: actions/create-release@v1
@@ -41,17 +40,32 @@ jobs:
     - name: Build Linux x86
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="linux" GOARCH="amd64" go build -o output/cwexport-linux-x86
 
+    - name: Package Linux x86
+      run: tar -zcvf output/cwexport-linux-x86.tar.gz output/cwexport-linux-x86
+
     - name: Build Linux arm64
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="linux" GOARCH="arm64" go build -o output/cwexport-linux-arm64
+
+    - name: Package Linux arm64
+      run: tar -zcvf output/cwexport-linux-arm64.tar.gz output/cwexport-linux-arm64
 
     - name: Build MacOS x86
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="darwin" GOARCH="amd64" go build -o output/cwexport-darwin-x86
 
+    - name: Package MacOS x86
+      run: tar -zcvf output/cwexport-darwin-x86.tar.gz output/cwexport-darwin-x86
+
     - name: Build MacOS arm64
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="darwin" GOARCH="arm64" go build -o output/cwexport-darwin-arm64
 
+    - name: Package MacOS arm64
+      run: tar -zcvf output/cwexport-darwin-arm64.tar.gz output/cwexport-darwin-arm64
+
     - name: Build Windows x86
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="windows" GOARCH="amd64" go build -o output/cwexport-win-x86
+
+    - name: Package Windows x86
+      run: tar -zcvf output/cwexport-windows-x86.tar.gz output/cwexport-windows-x86
 
     - name: Upload linux x86 artifact
       uses: actions/upload-release-asset@v1
@@ -59,9 +73,9 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./output/cwexport-linux-x86
-        asset_name: cwexport-linux-x86
-        asset_content_type: application/octet-stream
+        asset_path: ./output/cwexport-linux-x86.tar.gz
+        asset_name: cwexport-linux-x86.tar.gz
+        asset_content_type: application/gzip
 
     - name: Upload linux arm64 artifact
       uses: actions/upload-release-asset@v1
@@ -69,9 +83,9 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./output/cwexport-linux-arm64
-        asset_name: cwexport-linux-arm64
-        asset_content_type: application/octet-stream
+        asset_path: ./output/cwexport-linux-arm64.tar.gz
+        asset_name: cwexport-linux-arm64.tar.gz
+        asset_content_type: application/gzip
 
     - name: Upload darwin x86 artifact
       uses: actions/upload-release-asset@v1
@@ -79,9 +93,9 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./output/cwexport-darwin-x86
-        asset_name: cwexport-darwin-x86
-        asset_content_type: application/octet-stream
+        asset_path: ./output/cwexport-darwin-x86.tar.gz
+        asset_name: cwexport-darwin-x86.tar.gz
+        asset_content_type: application/gzip
 
     - name: Upload darwin arm64 artifact
       uses: actions/upload-release-asset@v1
@@ -89,9 +103,9 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./output/cwexport-darwin-arm64
-        asset_name: cwexport-darwin-arm64
-        asset_content_type: application/octet-stream
+        asset_path: ./output/cwexport-darwin-arm64.tar.gz
+        asset_name: cwexport-darwin-arm64.tar.gz
+        asset_content_type: application/gzip
 
     - name: upload windows artifact
       uses: actions/upload-release-asset@v1
@@ -99,6 +113,6 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./output/cwexport-win-x86
-        asset_name: cwexport-win-x86
-        asset_content_type: application/octet-stream
+        asset_path: ./output/cwexport-win-x86.tar.gz
+        asset_name: cwexport-win-x86.tar.gz
+        asset_content_type: application/gzip
