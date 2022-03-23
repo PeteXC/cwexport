@@ -65,7 +65,7 @@ jobs:
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="windows" GOARCH="amd64" go build -o output/cwexport-win-x86
 
     - name: Package Windows x86
-      run: tar -zcvf output/cwexport-windows-x86.tar.gz output/cwexport-windows-x86
+      run: tar -zcvf output/cwexport-win-x86.tar.gz output/cwexport-win-x86
 
     - name: Upload linux x86 artifact
       uses: actions/upload-release-asset@v1
