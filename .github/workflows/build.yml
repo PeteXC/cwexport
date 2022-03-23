@@ -41,31 +41,31 @@ jobs:
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="linux" GOARCH="amd64" go build -o output/cwexport-linux-x86
 
     - name: Package Linux x86
-      run: tar -zcvf output/cwexport-linux-x86.tar.gz output/cwexport-linux-x86
+      run: tar -zcvf cwexport-linux-x86.tar.gz -C output/ cwexport-linux-x86
 
     - name: Build Linux arm64
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="linux" GOARCH="arm64" go build -o output/cwexport-linux-arm64
 
     - name: Package Linux arm64
-      run: tar -zcvf output/cwexport-linux-arm64.tar.gz output/cwexport-linux-arm64
+      run: tar -zcvf output/cwexport-linux-arm64.tar.gz -C output/ cwexport-linux-arm64
 
     - name: Build MacOS x86
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="darwin" GOARCH="amd64" go build -o output/cwexport-darwin-x86
 
     - name: Package MacOS x86
-      run: tar -zcvf output/cwexport-darwin-x86.tar.gz output/cwexport-darwin-x86
+      run: tar -zcvf output/cwexport-darwin-x86.tar.gz -C output/ cwexport-darwin-x86
 
     - name: Build MacOS arm64
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="darwin" GOARCH="arm64" go build -o output/cwexport-darwin-arm64
 
     - name: Package MacOS arm64
-      run: tar -zcvf output/cwexport-darwin-arm64.tar.gz output/cwexport-darwin-arm64
+      run: tar -zcvf output/cwexport-darwin-arm64.tar.gz -C output/ cwexport-darwin-arm64
 
     - name: Build Windows x86
       run: GOOS="linux" GOARCH="amd64" go build -o cdk/lambda/processor/lambda -ldflags "-s -w" cdk/lambda/processor/main.go && GOOS="windows" GOARCH="amd64" go build -o output/cwexport-win-x86
 
     - name: Package Windows x86
-      run: tar -zcvf output/cwexport-win-x86.tar.gz output/cwexport-win-x86
+      run: tar -zcvf output/cwexport-win-x86.tar.gz -C output/ cwexport-win-x86
 
     - name: Upload linux x86 artifact
       uses: actions/upload-release-asset@v1
