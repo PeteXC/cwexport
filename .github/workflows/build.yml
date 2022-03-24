@@ -24,7 +24,7 @@ jobs:
   create:
     name: Create release
     runs-on: ubuntu-latest
-    needs: build
+    needs: setup
     outputs:
       release_upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
@@ -50,7 +50,7 @@ jobs:
   deploy:
     name: Build and deploy
     runs-on: ubuntu-latest
-    needs: [build, create]
+    needs: [setup, create]
     strategy:
       fail-fast: true
       matrix:
