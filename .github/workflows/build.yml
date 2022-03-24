@@ -85,7 +85,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ create.create_release.outputs.upload_url }}
         asset_path: ./output/cwexport-linux-x86.tar.gz
         asset_name: cwexport-linux-x86.tar.gz
         asset_content_type: application/gzip
@@ -95,7 +95,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ create.steps.create_release.outputs.upload_url }}
         asset_path: ./output/cwexport-linux-arm64.tar.gz
         asset_name: cwexport-linux-arm64.tar.gz
         asset_content_type: application/gzip
@@ -105,7 +105,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ create.steps.create_release.outputs.upload_url }}
         asset_path: ./output/cwexport-darwin-x86.tar.gz
         asset_name: cwexport-darwin-x86.tar.gz
         asset_content_type: application/gzip
@@ -115,7 +115,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ create.steps.create_release.outputs.upload_url }}
         asset_path: ./output/cwexport-darwin-arm64.tar.gz
         asset_name: cwexport-darwin-arm64.tar.gz
         asset_content_type: application/gzip
@@ -125,7 +125,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ create.steps.create_release.outputs.upload_url }}
         asset_path: ./output/cwexport-win-x86.tar.gz
         asset_name: cwexport-win-x86.tar.gz
         asset_content_type: application/gzip

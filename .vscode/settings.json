@@ -1,0 +1,53 @@
+{
+    "yaml.schemas": {
+        "file:/Users/petcha01/Library/Application Support/Code/User/globalStorage/amazonwebservices.aws-toolkit-vscode/sam.schema.json": [
+            "lambdas/request-lambda/template.yaml",
+            "lambdas/request-trigger-lambda/template.yaml",
+            "lambdas/package-search-lambda/template.yaml",
+            "lambdas/file-trigger-lambda/template.yaml",
+            "lambdas/product-release-package-init-lambda/template.yml",
+            "lambdas/product-release-processor-gate-lambda/template.yml",
+            "lambdas/product-release-notify-pdh-lambda/template.yml",
+            "lambdas/notify-pdh-lambda/template.yaml",
+            "lambdas/product-release-transform-lambda/template.yml",
+            "lambdas/product-release-insert-lambda/template.yml",
+            "lambdas/status-change-lambda/template.yaml",
+            "lambdas/request-search-lambda/template.yaml",
+            "lambdas/partversion-search-lambda/template.yaml",
+            "lambdas/product-release-request-trigger-lambda/template.yml",
+            "lambdas/get-efs-size-lambda/template.yml",
+            "lambdas/get-files-chunk-lambda/template.yaml",
+            "lambdas/patch-lambda/template.yaml",
+            "lambdas/download-lambda/template.yaml",
+            "lambdas/product-release-notify-lambda/template.yml",
+            "lambdas/insert-file-lambda/template.yaml",
+            "lambdas/product-release-status-available-trigger-lambda/template.yml"
+        ],
+        "file:///Users/petcha01/Library/Application%20Support/Code/User/globalStorage/amazonwebservices.aws-toolkit-vscode/sam.schema.json": [
+            "lambdas/package-search-lambda/template.yaml",
+            "lambdas/request-lambda/template.yaml",
+            "lambdas/file-trigger-lambda/template.yaml",
+            "lambdas/notify-pdh-lambda/template.yaml",
+            "lambdas/product-release-processor-gate-lambda/template.yml",
+            "lambdas/product-release-package-init-lambda/template.yml",
+            "lambdas/product-release-notify-pdh-lambda/template.yml",
+            "lambdas/partversion-search-lambda/template.yaml",
+            "lambdas/status-change-lambda/template.yaml",
+            "lambdas/request-search-lambda/template.yaml",
+            "lambdas/product-release-status-available-trigger-lambda/template.yml",
+            "lambdas/product-release-request-trigger-lambda/template.yml",
+            "lambdas/product-release-transform-lambda/template.yml",
+            "lambdas/product-release-insert-lambda/template.yml",
+            "lambdas/product-release-notify-lambda/template.yml",
+            "lambdas/download-lambda/template.yaml",
+            "lambdas/get-efs-size-lambda/template.yml",
+            "lambdas/insert-file-lambda/template.yaml",
+            "lambdas/request-trigger-lambda/template.yaml",
+            "lambdas/patch-lambda/template.yaml",
+            "lambdas/get-files-chunk-lambda/template.yaml",
+            "lambdas/product-release-event-logger-lambda/template.yml",
+            "lambdas/pdg-doc-packages-build-lambda/template.yml"
+        ],
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/peter.chai/Repos/cwexport/.github/workflows/build.yml"
+    }
+}
